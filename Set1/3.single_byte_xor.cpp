@@ -32,7 +32,7 @@ string decrypt(string input,char key)
         int c=c1*16+c2;
 //        cout<<c1<<" "<<c2<<" "<<c<<endl;
         if (is_valid(do_xor(c,key))==false) return output;
-        output=output+do_xor(c,key);
+        output=output+string(do_xor(c,key),1);
         input.erase(0,2);
     }
     return output;
