@@ -13,7 +13,6 @@ char convert(int i)
 }
 char do_xor(char c1,char c2)
 {
-
     return (char)(int(c1)^int(c2));
 }
 bool is_valid(char c)
@@ -32,12 +31,11 @@ string decrypt(string input,char key)
         int c=c1*16+c2;
 //        cout<<c1<<" "<<c2<<" "<<c<<endl;
         if (is_valid(do_xor(c,key))==false) return output;
-        output=output+string(do_xor(c,key),1);
+        output=output+do_xor(c,key);
         input.erase(0,2);
     }
     return output;
 }
-
 string find_xor_string(string input)
 {
     string consider=decrypt(input,' ');
