@@ -5,15 +5,13 @@ def valid_padding(str1):
     padding = ord(str1[-1])
     print n,padding
     if padding>n:
-        print "INVALID PADDING"
-        return str1
+        raise ValueError('Invalid padding')
     for i in range(1,padding+1):
 #        print ord(str1[-1]),padding
         if ord(str1[-i])!=padding:
-            print "INVALID PADDING"
-            return str1
+            raise ValueError('Invalid padding')
     return str1[0:n-padding]
 
-a= "ICE ICE BABY\x01\x02\x03\x04"
+a= "ICE ICE BABY\x04\x04\x04\x04"
 print a
 print valid_padding(a)
