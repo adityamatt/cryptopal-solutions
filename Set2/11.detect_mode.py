@@ -39,7 +39,7 @@ def encryption_oracle(plain_text):
     return output
 
     
-def detect_mode():
+def detect_mode(encryption_oracle):
     test = ""
     for i in range(80):
         test=test+"0"
@@ -50,5 +50,5 @@ def detect_mode():
             return "ECB"
     return "CBC"
     
-mode=detect_mode()
+mode=detect_mode(encryption_oracle)
 print "DETECTED MODE :",mode
