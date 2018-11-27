@@ -62,8 +62,7 @@ def little(inp):
     return a
 
 
-def encrypt(nonce,plain_text):
-    key = random_bytes(block_length)
+def encrypt(nonce,plain_text,key):
     key_len = len(plain_text)
     key_stream = ""
     counter = 0
@@ -79,9 +78,14 @@ def encrypt(nonce,plain_text):
 
 
 cipher_texts = list()
+key = random_bytes(block_length)
 
-for p in plaint_texts:
+for p in plain_texts:
     p = base64.b64decode(p)
-    cipher_texts.append(encrypt(nonce,p))
+    cipher_texts.append(encrypt(nonce,p,key))
     
+##################### Attacking
+min_len = min([len(p) for p in cipher_texts])
+max_len = max([len(p) for p in cipher_texts])
+
 
